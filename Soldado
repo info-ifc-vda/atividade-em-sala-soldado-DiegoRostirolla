@@ -1,0 +1,41 @@
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+public class Soldado {
+    private static int totalSoldados = 0;
+    private static final int DISTANCIA_PADRAO = 10;
+    private String nome;
+    private static List<Soldado> soldados = new ArrayList<>();
+    public Soldado(String nome) {
+        this.nome = nome;
+        totalSoldados++; 
+        soldados.add(this); // Adiciona o soldado à lista
+    }
+
+    // Método para movimentar o soldado
+    public void movimentar(int distancia) {
+        if (distancia > 0) {
+            System.out.println(nome + " se moveu " + distancia + " metros.");
+        } else {
+            System.out.println(nome + " se moveu " + DISTANCIA_PADRAO + " metros.");
+        }
+    }
+
+    // Método para atacar com uma arma específica
+    public void atacar(String arma) {
+        if (totalSoldados >= 10) {
+            if (arma != null && !arma.isEmpty()) {
+                System.out.println(nome + " atacou com " + arma + ".");
+            } else {
+                System.out.println(nome + " atacou com fuzil.");
+            }
+        } else {
+            System.out.println(nome + ": Ainda não, esperando o exército ficar maior.");
+        }
+    }
+
+    // Método para atacar com o fuzil (padrão)
+    public void atacar() {
+        atacar(null);
+    }
